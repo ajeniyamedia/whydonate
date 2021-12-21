@@ -24,12 +24,14 @@ export class ListCustomerComponent implements OnInit, OnDestroy
   @ViewChild(MatPaginator)
   paginator!: MatPaginator;
 
+  /**
+  * Constructor
+  *
+  * @param ChangeDetectorRef
+  * @param CustomerService
+  */
   constructor(
-    private _activatedRoute: ActivatedRoute,
     private _changeDetectorRef: ChangeDetectorRef,
-    private _formBuilder: FormBuilder,
-    private _renderer2: Renderer2,
-    private _router: Router,
     private _customerService: CustomerService
   )
   {
@@ -46,13 +48,12 @@ export class ListCustomerComponent implements OnInit, OnDestroy
    */
   ngOnInit(): void
   {
+
         // Get the customers
         this._customerService.customers$
         .pipe(takeUntil(this._unsubscribeAll))
         .subscribe((customers: Customer[]) => {
             this.customers = customers;
-
-            console.log(this.customers.length)
 
             // Mark for check
             this._changeDetectorRef.markForCheck();

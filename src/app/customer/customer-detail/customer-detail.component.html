@@ -1,1 +1,29 @@
-<p>customer-detail works!</p>
+<mat-toolbar>
+  <span>Customer details</span>
+</mat-toolbar>
+
+<div class="flex m-8" *ngIf="customers">
+
+<ul>
+  <li>
+    <span class="w-40 p-2">Name </span>
+    <span class="w-20 p-2">{{ selectedCustomer.name }} </span>
+  </li>
+  <li>
+    <span class="w-20 p-2">Email </span>
+    <span class="w-20 p-2">{{ selectedCustomer.email }} </span>
+  </li>
+  <li>
+    <span class="w-20 p-2">Phone </span>
+    <span class="w-20 p-2">{{ selectedCustomer.phone }} </span>
+  </li>
+  <li>
+    <span class="w-20 p-2">Created </span>
+    <span class="w-20 p-2">{{ selectedCustomer.created_at | date }} </span>
+  </li>
+  <li>
+    <span class="w-20 p-2">Updated </span>
+    <span class="w-20 p-2">{{ selectedCustomer.updated_at | date }} </span>
+  </li>
+</ul>
+</div>

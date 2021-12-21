@@ -38,13 +38,21 @@ export class CustomerService
     // -----------------------------------------------------------------------------------------------------
 
     /**
+    * Expose the covid data for easy access
+    */
+    getCurrentCustomer(response: Partial<Customer>[])
+    {
+        return  this._customers.next(response);
+    }
+
+    /**
      * Get customers
      */
      getCustomers(): Observable<Customer[]>
      {
          return this._httpClient.get<Customer[]>('https://customerdemoapi.herokuapp.com/api/customer/').pipe(
              tap((response: any) => {
-                 this._customers.next(response);
+                 this.getCurrentCustomer(response)
              })
          );
      }
