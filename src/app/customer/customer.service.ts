@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { BehaviorSubject, Observable, tap } from 'rxjs';
+import { BehaviorSubject, map, Observable, tap } from 'rxjs';
 import { Customer } from './customer.types';
 
 @Injectable({
@@ -56,6 +56,25 @@ export class CustomerService
              })
          );
      }
+
+
+    /**
+     * Create customer
+     *
+     * @param customer
+     */
+    createCustomer(customer: Customer): Observable<Customer>
+    {
+      return this._httpClient.post<any>(`https://customerdemoapi.herokuapp.com/api/customer/`,
+      {
+        address: customer.address,
+        email: customer.email,
+        name: customer.name,
+        phone: customer.phone
+      }).pipe(map(result => {
+              return result;
+        }));
+    }
 
 
 }

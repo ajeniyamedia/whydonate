@@ -1,0 +1,80 @@
+<mat-toolbar>
+  <span>Create customer</span>
+</mat-toolbar>
+<div class="flex flex-auto form__width">
+  <form class="flex flex-col flex-auto p-6 pt-10 w-1/3 sm:p-8 sm:pt-10"
+  #customerNgForm="ngForm"
+  [formGroup]="customerForm">
+
+      <!-- Name -->
+      <div class="mt-8">
+        <mat-form-field class="fuse-mat-no-subscript w-full">
+            <mat-label>Name</mat-label>
+            <input
+                matInput
+                [formControlName]="'name'"
+                [placeholder]="'Name'"
+                [spellcheck]="false">
+        </mat-form-field>
+      </div>
+
+      <!-- Email -->
+      <div class="mt-8">
+        <mat-form-field class="fuse-mat-no-subscript w-full">
+            <mat-label>Email</mat-label>
+            <input
+                matInput
+                [formControlName]="'email'"
+                [placeholder]="'Email'"
+                [spellcheck]="false">
+        </mat-form-field>
+      </div>
+
+      <!-- Phone -->
+      <div class="mt-8">
+        <mat-form-field class="fuse-mat-no-subscript w-full">
+            <mat-label>Phone</mat-label>
+            <input
+                matInput
+                [formControlName]="'phone'"
+                [placeholder]="'Phone'"
+                [spellcheck]="false">
+        </mat-form-field>
+      </div>
+
+      <!-- Address -->
+      <div class="mt-8">
+        <mat-form-field class="fuse-mat-no-subscript w-full">
+            <mat-label>Address</mat-label>
+            <input
+                matInput
+                [formControlName]="'address'"
+                [placeholder]="'Address'"
+                [spellcheck]="false">
+        </mat-form-field>
+      </div>
+
+       <!-- Actions -->
+       <div class="flex items-center mt-10 -mx-6 sm:-mx-12 py-4 pr-4 pl-1 sm:pr-12 sm:pl-7 border-t bg-gray-50 dark:bg-transparent">
+
+        <!-- Save -->
+        <button
+          class="w-full mt-6"
+          mat-flat-button
+          [color]="'primary'"
+          [disabled]="customerForm.disabled"
+          (click)="createCustomer()">
+          <span *ngIf="!customerForm.disabled">
+              Create
+          </span>
+          <mat-progress-spinner
+              *ngIf="customerForm.disabled"
+              [diameter]="24"
+              [mode]="'indeterminate'"></mat-progress-spinner>
+        </button>
+
+       </div>
+
+  </form>
+
+</div>

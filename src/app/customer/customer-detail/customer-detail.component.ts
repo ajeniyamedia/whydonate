@@ -55,9 +55,6 @@ export class CustomerDetailComponent implements OnInit
 
       this.customers = customers;
 
-        console.log(this.customers);
-
-
         this._route.params.subscribe(params => {
           // Get selected customer
           this.getCustomerById(params["id"]);
@@ -80,8 +77,6 @@ export class CustomerDetailComponent implements OnInit
   getCustomerById(customerId: any)
   {
     this.selectedCustomer = this.customers.find(i => i.id === customerId);
-
-    console.log(this.selectedCustomer);
 
     this._changeDetectorRef.markForCheck();
   }
